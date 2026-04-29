@@ -1,7 +1,7 @@
 import nbformat
 
-# Thay 'ten_file.ipynb' bằng tên file thực tế của bạn
-file_path = 'ten_file.ipynb'
+
+file_path = 'Ai_Go_Bike.ipynb'
 
 with open(file_path, 'r', encoding='utf-8') as f:
     nb = nbformat.read(f, as_version=4)
