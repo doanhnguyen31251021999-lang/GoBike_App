@@ -1,15 +1,15 @@
-import json
+import nbformat
 
-# Read the notebook
-with open('Ai_Go_Bike.ipynb', 'r') as f:
-    nb = json.load(f)
+# Thay 'ten_file.ipynb' bằng tên file thực tế của bạn
+file_path = 'ten_file.ipynb'
 
-# Remove problematic metadata
-if 'metadata' in nb and 'widgets' in nb['metadata']:
-    del nb['metadata']['widgets']
-    print("✓ Removed problematic 'widgets' metadata")
+with open(file_path, 'r', encoding='utf-8') as f:
+    nb = nbformat.read(f, as_version=4)
 
-# Save the fixed notebook
-with open('Ai_Go_Bike.ipynb', 'w') as f:
-    json.dump(nb, f, indent=1)
-    print("✓ Notebook fixed and saved successfully!")
+# Xóa metadata widgets bị lỗi cấu trúc
+if 'widgets' in nb.metadata:
+    del nb.metadata['widgets']
+    print("Đã xóa metadata lỗi thành công!")
+
+with open(file_path, 'w', encoding='utf-8') as f:
+    nbformat.write(nb, f)
